@@ -9,7 +9,9 @@ const weather = (lat, lng, callback) => {
     else
       callback(
         null,
-        `It is currenly ${response.body.current.temp} degrees out. Humidity ${response.body.current.humidity}%`
+        `It is currenly ${
+          response.body.current.temp - 273
+        } degrees out. Humidity ${response.body.current.humidity}%`
       );
   });
 };
