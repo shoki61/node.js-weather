@@ -1,12 +1,16 @@
 const geocode = require("./utils/geocode");
 const weather = require("./utils/weather");
 
-geocode("london", (error, data) => {
-  console.log("Error", error);
-  console.log("Data", data);
-});
 
-weather(51.5073509, -0.1277583, (error, data) => {
-  console.log("Error", error);
-  console.log("Data", data);
+geocode("gaziantep", (error, data) => {
+  if (error) {
+    return console.log(error);
+  }
+  weather(data.latitude, data.longitude, (error, weatherData) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log(data.location);
+    console.log(weatherData);
+  });
 });

@@ -3,7 +3,6 @@ const apis = require("../env");
 
 const geocode = (address, callback) => {
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apis.geocode}`;
-  console.log(address);
   request({ url: url, json: true }, (error, response) => {
     if (error) {
       callback("Unable to connect to location service!", null);
