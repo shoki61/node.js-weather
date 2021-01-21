@@ -13,16 +13,16 @@ yargs.command({
       type: "string",
     },
   },
-  handler: (argv) => {
-    geocode(argv.location, (error, data) => {
+  handler: ({ location }) => {
+    geocode(location, (error, { latitude, longitude, location }) => {
       if (error) {
         return console.log(error);
       }
-      weather(data.latitude, data.longitude, (error, weatherData) => {
+      weather(latitude, longitude, (error, weatherData) => {
         if (error) {
           return console.log(error);
         }
-        console.log(data.location);
+        console.log(location);
         console.log(weatherData);
       });
     });
